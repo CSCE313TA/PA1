@@ -114,10 +114,10 @@ The following are your tasks:
 - ***Requesting Files:* (35 points)**
 
 	- (20 pts) Request a file from the server side using the following command format again using getopt() function:	
-	```
-	$ ./client -f <file name>
-	```
-	Note that the file does not need to be one of the .csv files currently existing in the BIMDC directory. You can put any file in the BIMDC directory and request that. The steps for requesting a file as follows. First, send a file message to get its length, and then send a series of file messages to get the actual content of the file. Put the received file under the received/ directory with the same name as the original file. Compare the file against the original using linux command diff and demonstrate that they are exactly same. Measure the time for the transfer for different file sizes and put the results in the report. A graph is best suited for such presentation.
+		```
+		$ ./client -f <file name>
+		```
+		Note that the file does not need to be one of the .csv files currently existing in the BIMDC directory. You can put any file in the BIMDC directory and request that. The steps for requesting a file as follows. First, send a file message to get its length, and then send a series of file messages to get the actual content of the file. Put the received file under the received/ directory with the same name as the original file. Compare the file against the original using linux command diff and demonstrate that they are exactly same. Measure the time for the transfer for different file sizes and put the results in the report. A graph is best suited for such presentation.
 
 	- (10 pts) Make sure to treat the file as binary, because we will use this same program to transfer any type of file (e.g., music file, ppt and pdf files who are not necessarily made of ASCII texts). Putting the data in a STL string will not work because C++ strings are NULL terminated. To demonstrate that your file transfer is capable of handling binary files, make a large empty file under the BIMDC/ directory using the truncate command (see man pages on how to use truncate), transfer that file, and then compare to make sure they are identical using the ```diff``` command.
 
