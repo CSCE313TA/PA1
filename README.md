@@ -23,12 +23,14 @@ You are given a source directory with the following files:
 - A common.h and a common.cpp file that contain different useful classes and functions potentially shared between the server and the client. For instance, if you decide to create classes for different types of messages (e.g., data message, file message), you should put them in these files.
 
 Download the source and unzip it. Open a terminal, navigate to the directory, and then build using make command. After that, run the `./server` to start the server. Now, open another terminal, navigate to the same directory, and run client. At this point, the client will connect to the server, exchange a simple message and then the client will exit. Since pipe is a point-to-point connection, when either the client or the server exits, the other side will exit as well after receiving SIGPIPE signal for “broken pipe”.
-
-**Server Specification**
+<br><br>
+	
+*Server Specification*
 
 The server supports several functionalities. The client requests a certain functionality by sending the appropriate message to the server. Internally, the server will execute the correct functionality, prepare a reply message for the client and send it back.
-
-**Connecting to the Server**
+<br><br>
+	
+*Connecting to the Server*
 
 You will see the following in the server main function:
 
@@ -37,8 +39,9 @@ FIFORequestChannel control_chan ("control", FIFORequestChannel::SERVER_SIDE);
 which sets up a communication channel over an OS-provided IPC mechanism called “named pipe”. Note that the first argument in the channel constructor is the name of the channel. To connect to this server, the client has to create an instance with the same name, but with CLIENT_SIDE as the second argument:
 
 FIFORequestChannel control_chan ("control", FIFORequestChannel::CLIENT_SIDE);
-
-**Requesting Data Points**
+<br><br>
+	
+*Requesting Data Points*
 
 After creating the channel, the server then goes in a “infinite” loop that processes client requests based on the type. Now, let us find out how the server works. The server maintains ECG values (at 2 contact points) for each patient in a time series where there are 2 data points (i.e., ecg1 and ecg2) collected every 4ms (see any of the .csv files under the BIMDC/ directory) for the duration of a minute. That means there is 15K data points for each patient in each file and there are 15 such patients. Hence, there are 15 files each with 15K datapoints.
 
@@ -59,8 +62,9 @@ The following is an example of requesting ecg2 for patient 10 at time 59.004 fro
 	$ ./client -p 10 -t 59.00 -e 2
 
 In the above, the argument “-p” is for which patient, “-t” for time, and “-e” for ecg no.
-
-**Requesting Files**
+<br><br>
+	
+*Requesting Files*
 
 To request a file, you need to package the following information in a message:
 
@@ -91,8 +95,9 @@ The following is an example request for getting file “10.csv” from the clien
 	$ ./client -f 10.csv
 
 where the argument “-f” is for specifying file name.
-
-**Requesting New Channel Creation**
+<br><br>
+	
+*Requesting New Channel Creation*
 
 The client can ask the server to create a new channel of communication. This feature will be implemented in this PA and used extensively in the following ones when you write multi-threaded client. The client sends a special message with message type set to NEWCHANNEL_MSG. In response, the server creates a new request channel object, returns the name back, which the client uses to join into the same channel. This is shown in the server’s process_new_channel function.
 
