@@ -21,7 +21,7 @@ You are given a source directory with the following files:
 
 - A common.h and a common.cpp file that contain different useful classes and functions potentially shared between the server and the client. For instance, if you decide to create classes for different types of messages (e.g., data message, file message), you should put them in these files.
 
-Download the source and unzip it. Open a terminal, navigate to the directory, and then build using make command. After that, run the ```./server``` to start the server. Now, open another terminal, navigate to the same directory, and run client. At this point, the client will connect to the server, exchange a simple message and then the client will exit. Since pipe is a point-to-point connection, when either the client or the server exits, the other side will exit as well after receiving SIGPIPE signal for “broken pipe”.
+Download the source and unzip it. Open a terminal, navigate to the directory, and then build using make command. After that, run the `./server` to start the server. Now, open another terminal, navigate to the same directory, and run client. At this point, the client will connect to the server, exchange a simple message and then the client will exit. Since pipe is a point-to-point connection, when either the client or the server exits, the other side will exit as well after receiving SIGPIPE signal for “broken pipe”.
 
 **Server Specification**
 
@@ -109,7 +109,7 @@ The following are your tasks:
 
 		$ ./client -p <person no> -t <time in seconds> -e <ecg no>
 
-	You must use the linux function ```getopt()``` to collect the command line arguments. You cannot scan the input from the standard input using cin or scanf either. After demonstrating one data point, request at least 1000 data points for a person (both ecg1 and ecg2), collect the responses, and put them in a file called x1.csv. Compare the file against the corresponding data points in the original file and demonstrate that they match. Also, measure the time for collecting data points using ```gettimeofday``` function, which has microsecond granulity and put the result in the report.
+	You must use the linux function `getopt()` to collect the command line arguments. You cannot scan the input from the standard input using cin or scanf either. After demonstrating one data point, request at least 1000 data points for a person (both ecg1 and ecg2), collect the responses, and put them in a file called x1.csv. Compare the file against the corresponding data points in the original file and demonstrate that they match. Also, measure the time for collecting data points using `gettimeofday` function, which has microsecond granulity and put the result in the report.
 
 - ***Requesting Files:* (35 points)**
 
@@ -119,13 +119,13 @@ The following are your tasks:
 		```
 		Note that the file does not need to be one of the .csv files currently existing in the BIMDC directory. You can put any file in the BIMDC directory and request that. The steps for requesting a file as follows. First, send a file message to get its length, and then send a series of file messages to get the actual content of the file. Put the received file under the received/ directory with the same name as the original file. Compare the file against the original using linux command diff and demonstrate that they are exactly same. Measure the time for the transfer for different file sizes and put the results in the report. A graph is best suited for such presentation.
 
-	- (10 pts) Make sure to treat the file as binary, because we will use this same program to transfer any type of file (e.g., music file, ppt and pdf files who are not necessarily made of ASCII texts). Putting the data in a STL string will not work because C++ strings are NULL terminated. To demonstrate that your file transfer is capable of handling binary files, make a large empty file under the BIMDC/ directory using the truncate command (see man pages on how to use truncate), transfer that file, and then compare to make sure they are identical using the ```diff``` command.
+	- (10 pts) Make sure to treat the file as binary, because we will use this same program to transfer any type of file (e.g., music file, ppt and pdf files who are not necessarily made of ASCII texts). Putting the data in a STL string will not work because C++ strings are NULL terminated. To demonstrate that your file transfer is capable of handling binary files, make a large empty file under the BIMDC/ directory using the truncate command (see man pages on how to use truncate), transfer that file, and then compare to make sure they are identical using the `diff` command.
 
 	- (5 pts) Experiment with transferring larger files 100MB), and document required time. What is the main bottleneck here? Can you change the transfer time by varying the bottleneck? [Hint: the most likely bottleneck is buffer capacity]
 
 - ***Requesting a New Channel:* (15 pts)** Ask the server to create a new channel for you by sending a special NEWCHANNEL_MSG request and join that channel. Use the command format shown in the example above. After the channel is created, demonstrate that you can use that to speak to the server. Sending a few data point requests and receiving their responses is adequate for that demonstration.
 
-- ***Run the Server as a child process:* (15 pts)** Run the server process as a child of the client process using ```fork()``` and ```exec()``` such that you do need two terminals: 1 for the client and another for the server. The outcome is that you open a single terminal, run the client which first runs the server and then connects to it. Also, to make sure that the server does not keep running after the client dies, sent a special QUIT_MSG to the server and call ```wait()``` function to wait for its finish.
+- ***Run the Server as a child process:* (15 pts)** Run the server process as a child of the client process using `fork()` and `exec()` such that you do need two terminals: 1 for the client and another for the server. The outcome is that you open a single terminal, run the client which first runs the server and then connects to it. Also, to make sure that the server does not keep running after the client dies, sent a special QUIT_MSG to the server and call `wait()` function to wait for its finish.
 
 - ***Closing Channels:* (5 pts)** You must also ensure that there are NO open connections at the end and NO temporary files remaining in the directory either. The server would clean up this resources as long as you send QUIT_MSG at the end. This part is worth 5 points. Note that the given client.cpp already does this for the control channel.
 
