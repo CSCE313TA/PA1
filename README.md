@@ -1,3 +1,4 @@
+
 # <p align="center">PA#1: A Client Program Speaking to a Server<p>
 
 **Introduction**
@@ -106,9 +107,9 @@ The following is a request a new channel:
 The following are your tasks:
 
 - ***Requesting Data Points:* (15 pts)** First, request one data point from the server by running the client using the following command line format:
-
-		$ ./client -p <person no> -t <time in seconds> -e <ecg no>
-
+	```
+	$ ./client -p <person no> -t <time in seconds> -e <ecg no>
+	```
 	You must use the linux function `getopt()` to collect the command line arguments. You cannot scan the input from the standard input using cin or scanf either. After demonstrating one data point, request at least 1000 data points for a person (both ecg1 and ecg2), collect the responses, and put them in a file called x1.csv. Compare the file against the corresponding data points in the original file and demonstrate that they match. Also, measure the time for collecting data points using `gettimeofday` function, which has microsecond granulity and put the result in the report.
 
 - ***Requesting Files:* (35 points)**
