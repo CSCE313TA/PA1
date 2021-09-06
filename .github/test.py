@@ -104,3 +104,7 @@ if "CLEANUP" in sys.argv:
 
 
 print(f"{earned_points}/{sum_points} points for cases {sys.argv[1:]}")
+if sum_points == earned_points:
+	exit(0)
+else:
+	exit(1)
