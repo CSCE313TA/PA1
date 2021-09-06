@@ -7,7 +7,7 @@ import glob
 from time import sleep
 import os
 import filecmp
-
+from pathlib import Path
 
 SHOULD_SPAWN_SERVER = False
 
@@ -71,7 +71,7 @@ def try_child():
 	sleep(0.5)
 	return not any([b"server" in x.split()[3] for x in check_output(["ps"]).split(b"\n") if len(x) > 3])
 
-os.mkdir("received")
+Path("received").mkdir(parents=True, exist_ok=True)
 earned_points = 0
 sum_points = 0
 
@@ -100,8 +100,9 @@ if "FILE_BINARY" in sys.argv:
 	if check_file_binary():
 		earned_points += 10
 
+cleanup()
+request_datapoint("0", "0", "1")
 clean = cleanup()
-
 if "CLEANUP" in sys.argv:
 	sum_points += 5
 	if clean:
