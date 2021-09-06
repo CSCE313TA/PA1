@@ -30,6 +30,7 @@ def cleanup():
 
 def request_datapoint(time, ecg, person):
 	p = Popen(["./client", "-p" , str(person), "-e", str(ecg), "-t", str(time)], stdout=PIPE, stdin=None)
+	time.sleep(0.2)
 	output = p.stdout.readline().decode()
 	p.terminate()
 	with open(f"BIMDC/{person}.csv","r") as f:
@@ -86,8 +87,7 @@ if "CHILD" in sys.argv:
 
 if "DATAPOINT" in sys.argv:
 	sum_points += 15
-	check = all([request_random_datapoint() for x in range(5)])
-	if check:
+	if request_random_datapoint():
 		earned_points += 15
 
 if "FILE_CSV" in sys.argv:
