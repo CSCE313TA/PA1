@@ -30,7 +30,7 @@ def cleanup():
 
 def request_datapoint(time, ecg, person):
 	p = Popen(["./client", "-p" , str(person), "-e", str(ecg), "-t", str(time)], stdout=PIPE, stdin=None)
-	time.sleep(0.2)
+	sleep(0.2)
 	output = p.stdout.readline().decode()
 	p.terminate()
 	with open(f"BIMDC/{person}.csv","r") as f:
