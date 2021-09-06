@@ -71,7 +71,7 @@ def try_child():
 	sleep(0.5)
 	return not any([b"server" in x.split()[3] for x in check_output(["ps"]).split(b"\n") if len(x) > 3])
 
-
+os.mkdir("received")
 earned_points = 0
 sum_points = 0
 
