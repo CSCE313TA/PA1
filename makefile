@@ -9,10 +9,10 @@ FIFOreqchannel.o: FIFOreqchannel.h FIFOreqchannel.cpp
 	g++ -g -w -std=c++11 -c FIFOreqchannel.cpp
 
 client: client.cpp FIFOreqchannel.o common.o
-	g++ -g -w -std=c++11 -o client client.cpp FIFOreqchannel.o common.o -lpthread -lrt
+	g++ -g -w -std=c++11 -o client client.cpp FIFOreqchannel.o common.o -lpthread
 
 server: server.cpp  FIFOreqchannel.o common.o
-	g++ -g -w -std=c++11 -o server server.cpp FIFOreqchannel.o common.o -lpthread -lrt
+	g++ -g -w -std=c++11 -o server server.cpp FIFOreqchannel.o common.o -lpthread
 
 clean:
 	rm -rf *.o *.csv fifo* server client data*_*
