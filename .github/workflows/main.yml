@@ -8,5 +8,5 @@
         runs-on: self-hosted
         steps:
           - uses: actions/checkout@v2
-          - run: sed -i 's/ubuntu-latest/self-hosted' .github/workflows/classroom.yml
+          - run: sed -i 's/ubuntu-latest/self-hosted/' .github/workflows/classroom.yml
           - uses: stefanzweifel/git-auto-commit-action@v4
