@@ -1,11 +1,12 @@
-    name: GitHub Classroom Workflow
+    name: Setup
 
-    on: [push]
+    on: [create]
 
     jobs:
       build:
-        name: Autograding
+        name: update autograder to selfhosted
         runs-on: self-hosted
         steps:
           - uses: actions/checkout@v2
-          - uses: education/autograding@v1
+          - run: sed -i 's/ubuntu-latest/self-hosted' .github/workflows/classroom.yml
+          - uses: stefanzweifel/git-auto-commit-action@v4
