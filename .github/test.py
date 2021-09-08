@@ -20,6 +20,7 @@ def setup():
 
 def cleanup():
 	os.system("killall server")
+	os.system("killall client") # haha hack goes brr
 	fifo_files = glob.glob("fifo*")
 	if len(fifo_files) > 0:
 		for i in fifo_files:
