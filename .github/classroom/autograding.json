@@ -3,7 +3,7 @@
       {
         "name": "Requesting Random Datapoints",
         "setup": "make",
-        "run": ".github/test.py DATAPOINT",
+        "run": "timeout 10s .github/test.py DATAPOINT",
         "input": "",
         "output": "",
         "comparison": "included",
@@ -13,7 +13,7 @@
       {
         "name": "Transferring ASCII Files",
         "setup": "make",
-        "run": ".github/test.py FILE_CSV",
+        "run": "timeout 10s .github/test.py FILE_CSV",
         "input": "",
         "output": "",
         "comparison": "included",
@@ -23,7 +23,7 @@
       {
         "name": "Transferring Binary Files",
         "setup": "make",
-        "run": ".github/test.py FILE_BINARY",
+        "run": "timeout 10s .github/test.py FILE_BINARY",
         "input": "",
         "output": "",
         "comparison": "included",
@@ -33,7 +33,7 @@
       {
         "name": "Creates child server process",
         "setup": "make",
-        "run": ".github/test.py CHILD",
+        "run": "timeout 10s .github/test.py CHILD",
         "input": "",
         "output": "",
         "comparison": "included",
@@ -43,7 +43,7 @@
       {
         "name": "Cleans up server process",
         "setup": "make",
-        "run": ".github/test.py CLEANUP",
+        "run": "timeout 10s .github/test.py CLEANUP",
         "input": "",
         "output": "",
         "comparison": "included",

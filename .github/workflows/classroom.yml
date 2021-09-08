@@ -1,7 +1,10 @@
     name: GitHub Classroom Workflow
 
-    on: [push]
-
+    on:
+      push:
+        paths: 
+          - '*.cpp'
+          - '*.h'
     jobs:
       build:
         name: Autograding
