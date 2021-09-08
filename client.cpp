@@ -3,6 +3,7 @@
     Department of Computer Science & Engineering
     Texas A&M University
     Date  : 2/8/20
+	Original author of the starter code
  */
 #include "common.h"
 #include "FIFOreqchannel.h"
