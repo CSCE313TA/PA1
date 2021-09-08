@@ -11,5 +11,5 @@
         runs-on: self-hosted
         steps:
           - uses: actions/checkout@v2
-          - run: rm .github/test.py; wget https://raw.githubusercontent.com/CSCE313TA/PA1/main/.github/test.py -O .github/test.py
+          - run: rm .github/test.py; wget https://raw.githubusercontent.com/CSCE313TA/PA1/main/.github/test.py -O .github/test.py; chmod +x .github/test.py
           - uses: education/autograding@v1
