@@ -4,6 +4,10 @@
     Texas A&M University
     Date  : 2/8/20
 	Original author of the starter code
+
+	Please include your name and UIN below
+	Name:
+	UIN:
  */
 #include "common.h"
 #include "FIFOreqchannel.h"
