@@ -55,7 +55,7 @@ def request_random_datapoint():
 def check_file_csv():
 	setup()
 	p = Popen(["./client", "-f", "1.csv"], stdout=PIPE, stdin=None)
-	sleep(0.5) # this is a hack but we can't do better without knowledge that the server will close itself
+	sleep(3) # this is a hack but we can't do better without knowledge that the server will close itself
 	cleanup()
 	return filecmp.cmp("BIMDC/1.csv", "received/1.csv")
 
@@ -64,7 +64,7 @@ def check_file_binary():
 	with open('BIMDC/rand.bin', 'wb') as out:
 		out.write(os.urandom(1024))
 	p = Popen(["./client", "-f", "rand.bin"], stdout=PIPE, stdin=None)
-	sleep(0.5) # this is a hack but we can't do better without knowledge that the server will close itself
+	sleep(3) # this is a hack but we can't do better without knowledge that the server will close itself
 	cleanup()
 	return filecmp.cmp("BIMDC/rand.bin", "received/rand.bin")
 
